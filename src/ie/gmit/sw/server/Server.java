@@ -66,16 +66,21 @@ public class Server
 		
 	} // end listerner
 	
-	private class HTTPRequest implements Runnable{
+	private class HTTPRequest implements Runnable
+	{
 		private Socket socket; 
 		
-		private HTTPRequest(Socket request) { 
+		private HTTPRequest(Socket request) 
+		{ 
 			this.socket = request; 
-		}
-
-        public void run() {
-            try{ 
-            	
+		}//HTTPRequest
+		
+		//Run method 
+        public void run() 
+        {
+            try
+            { 
+            	//Origin source: https://docs.oracle.com/javase/7/docs/api/java/io/ObjectOutputStream.html
             	ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
                 Object command = in.readObject(); 
                 
@@ -88,11 +93,13 @@ public class Server
                 out.flush();
                 out.close(); 
                 
-            } catch (Exception e) { 
+            }//try 
+            catch (Exception e) 
+            { 
             	System.out.println("Error: " + socket.getRemoteSocketAddress());
             	e.printStackTrace();
-            }
+            }//catch
         } // end run
         
 	} // end HTTPRequest
-}
+}//Server

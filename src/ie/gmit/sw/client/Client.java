@@ -13,7 +13,7 @@ public class Client
 		try 
 		{ 
 			Socket s = new Socket("localhost", 7777);
-			
+			//Original source: https://docs.oracle.com/javase/7/docs/api/java/io/ObjectOutputStream.html
 			ObjectOutputStream out = new ObjectOutputStream(s.getOutputStream());
 			out.writeObject(new Server());
 			out.flush();
@@ -25,7 +25,7 @@ public class Client
 			
 			String threadName = Thread.currentThread().getName(); 
 			
-			s.close(); // Tidy up
+			s.close();
 			
 		}//try 
 		catch (Exception e)
